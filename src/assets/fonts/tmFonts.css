@@ -1,0 +1,152 @@
+/* TELENOR EVOLUTION UI */
+@font-face {
+  font-family: "telenorEvUi";
+  src: url("@/assets/fonts/tmEvolutionUi/TelenorEvolutionUI-Light.otf")
+    format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  unicode-range: U+000-5FF;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+@font-face {
+  font-family: "telenorEvUi";
+  src: url("@/assets/fonts/tmEvolutionUi/TelenorEvolutionUI-Normal.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+000-5FF;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+@font-face {
+  font-family: "telenorEvUi";
+  src: url("@/assets/fonts/tmEvolutionUi/TelenorEvolutionUI-Medium.otf")
+    format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  unicode-range: U+000-5FF;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+@font-face {
+  font-family: "telenorEvUi";
+  src: url("@/assets/fonts/tmEvolutionUi/TelenorEvolutionUI-Bold.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range: U+000-5FF;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+/* italic */
+@font-face {
+  font-family: "telenorEvUi";
+  src: url("@/assets/fonts/tmEvolutionUi/TelenorEvolutionUI-ExtraBoldSlanted.otf")
+    format("opentype");
+  font-weight: 800;
+  font-style: italic;
+  unicode-range: U+000-5FF;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+@font-face {
+  font-family: "telenorEvUi";
+  font-weight: 700;
+  font-style: italic;
+  src: local("Arial Italic"), local("Arial");
+}
+@font-face {
+  font-family: "telenorEvUi";
+  font-weight: 500;
+  font-style: italic;
+  src: local("Arial Italic"), local("Arial");
+}
+@font-face {
+  font-family: "telenorEvUi";
+  font-weight: 400;
+  font-style: italic;
+  src: local("Arial Italic"), local("Arial");
+}
+@font-face {
+  font-family: "telenorEvUi";
+  font-weight: 300;
+  font-style: italic;
+  src: local("Arial Italic"), local("Arial");
+}
+/* TELENOR EVOLUTION */
+@font-face {
+  font-family: "telenorEv";
+  src: url("@/assets/fonts/tmEvolution/TelenorEvolution-Light.otf")
+    format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  unicode-range: U+000-5FF;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+@font-face {
+  font-family: "telenorEv";
+  src: url("@/assets/fonts/tmEvolution/TelenorEvolution-Normal.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+000-5FF;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+@font-face {
+  font-family: "telenorEv";
+  src: url("@/assets/fonts/tmEvolution/TelenorEvolution-Medium.otf")
+    format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  unicode-range: U+000-5FF;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+@font-face {
+  font-family: "telenorEv";
+  src: url("@/assets/fonts/tmEvolution/TelenorEvolution-Bold.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range: U+000-5FF;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+/* italic */
+@font-face {
+  font-family: "telenorEv";
+  src: url("@/assets/fonts/tmEvolution/TelenorEvolution-ExtraBoldSlanted.otf")
+    format("opentype");
+  font-weight: 800;
+  font-style: italic;
+  unicode-range: U+000-5FF;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+@font-face {
+  font-family: "telenorEv";
+  font-weight: 700;
+  font-style: italic;
+  src: local("Arial Italic"), local("Arial");
+}
+@font-face {
+  font-family: "telenorEv";
+  font-weight: 500;
+  font-style: italic;
+  src: local("Arial Italic"), local("Arial");
+}
+@font-face {
+  font-family: "telenorEv";
+  font-weight: 400;
+  font-style: italic;
+  src: local("Arial Italic"), local("Arial");
+}
+@font-face {
+  font-family: "telenorEv";
+  font-weight: 300;
+  font-style: italic;
+  src: local("Arial Italic"), local("Arial");
+}

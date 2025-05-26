@@ -1,0 +1,20 @@
+html {
+  &.dark {
+    body {
+      color: theme("colors.telenor-neutral-tint-15");
+      *,
+      ::before,
+      ::after {
+        border-color: theme("colors.white" / 5%);
+      }
+    }
+  }
+  body {
+    letter-spacing: theme("letterSpacing.wide");
+    font-size: theme("fontSize.sm");
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: theme("colors.telenor-neutral-ui-default");
+    line-height: theme("lineHeight.5");
+  }
+}

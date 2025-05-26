@@ -1,0 +1,7 @@
+/* telenor font */
+@import "./fonts/tmFonts.css";
+@import "./_global.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
