@@ -7,10 +7,25 @@
         <img :src="logo" alt="Logo" class="h-10" />
       </RouterLink>
     </div>
-    <div>Log Inn</div>
+    <div class="flex items-center">
+      <SignedIn>
+        <OrganizationSwitcher />
+        <UserButton />
+      </SignedIn>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+    </div>
   </header>
 </template>
 
 <script lang="ts" setup>
 import logo from "@/assets/images/tm_logo_black.svg"
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+  OrganizationSwitcher,
+} from "@clerk/vue"
 </script>

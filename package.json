@@ -12,6 +12,7 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@clerk/vue": "^1.8.4",
     "@star-fleet/component-base": "^1.0.3",
     "@star-fleet/component-buttons": "^1.1.4",
     "@star-fleet/component-dropdowns": "^1.2.12",

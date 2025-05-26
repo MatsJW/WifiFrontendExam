@@ -1,66 +1,71 @@
 <template>
-  <div class="py-10">
-    <section class="mb-10 gap-4 flex items-center">
-      <Button
-        text="Add Chart"
-        @click="openAddModal"
-        icon="r"
-        size="sm"
-        type="primary"
+  <SignedIn>
+    <div class="py-10">
+      <section class="mb-10 gap-4 flex items-center">
+        <Button
+          text="Add Chart"
+          @click="openAddModal"
+          icon="r"
+          size="sm"
+          type="primary"
+        >
+          <template #icon="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              :width="icon.size"
+              :height="icon.size"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14" />
+              <path d="M12 5v14" />
+            </svg>
+          </template>
+        </Button>
+
+        <VueDatePicker
+          class="max-w-80"
+          v-model="selectedDate"
+          range
+          :min-date="new Date('2025-04-01')"
+          :max-date="new Date('2025-04-30')"
+          :start-date="new Date('2025-04-01')"
+          :focus-start-date="true"
+          :enable-time-picker="false"
+          prevent-min-max-navigation
+        />
+      </section>
+      <section
+        :key="selectedDate"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
       >
-        <template #icon="icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            :width="icon.size"
-            :height="icon.size"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M5 12h14" />
-            <path d="M12 5v14" />
-          </svg>
-        </template>
-      </Button>
+        <Card
+          v-for="(item, index) in chartsStore.chartData"
+          :key="`${item.shipId}-${item.dataType}-${item.dataAction}-${item.timeframe}`"
+          :title="`Chart for ${item.shipId === '' ? 'Fleet' : item.shipId} - ${
+            item.dataAction
+          } ${item.dataType} (${item.timeframe})`"
+          :data="item"
+          :start-date="selectedDate[0]"
+          :end-date="selectedDate[1]"
+          @delete="deleteChart(index)"
+        />
+      </section>
+    </div>
 
-      <VueDatePicker
-        class="max-w-80"
-        v-model="selectedDate"
-        range
-        :min-date="new Date('2025-04-01')"
-        :max-date="new Date('2025-04-30')"
-        :start-date="new Date('2025-04-01')"
-        :focus-start-date="true"
-        :enable-time-picker="false"
-        prevent-min-max-navigation
-      />
-    </section>
-    <section
-      :key="selectedDate"
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-    >
-      <Card
-        v-for="(item, index) in chartsStore.chartData"
-        :key="`${item.shipId}-${item.dataType}-${item.dataAction}-${item.timeframe}`"
-        :title="`Chart for ${item.shipId === '' ? 'Fleet' : item.shipId} - ${
-          item.dataAction
-        } ${item.dataType} (${item.timeframe})`"
-        :data="item"
-        :start-date="selectedDate[0]"
-        :end-date="selectedDate[1]"
-        @delete="deleteChart(index)"
-      />
-    </section>
-  </div>
-
-  <Modal v-model="AddModal">
-    <ModalSelections @close="AddModal = false" />
-  </Modal>
-
-  {{ selectedDate }}
+    <Modal v-model="AddModal">
+      <ModalSelections @close="AddModal = false" />
+    </Modal>
+  </SignedIn>
+  <SignedOut>
+    <div class="flex items justify-center min-h-screen text-gray-500">
+      <h1 class="text-2xl font-bold">Please sign in to view charts</h1>
+    </div>
+  </SignedOut>
 </template>
 
 <script lang="ts" setup>
@@ -71,6 +76,7 @@ import Modal from "@/components/Modal.vue"
 import ModalSelections from "@/components/ModalSelections.vue"
 import { useChartsStore } from "@/stores/charts-store"
 import type { ChartData } from "@/stores/charts-store"
+import { SignedIn, SignedOut } from "@clerk/vue"
 
 const chartsStore = useChartsStore()
 

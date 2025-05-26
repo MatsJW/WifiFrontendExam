@@ -1,4 +1,5 @@
 import type { ChartData } from "@/stores/charts-store"
+import { useAuth } from "@clerk/vue"
 
 const baseUrl = "http://localhost:5085"
 
@@ -7,6 +8,7 @@ export interface FetchOptionsI {
   method: apiTypesT
   credentials?: "include"
   headers: {
+    Authorization?: string
     "Content-Type": string
   }
   body?: string // optional body - not for get type methods
@@ -26,10 +28,14 @@ export async function apiWrapper(
     }
   }
 
+  // Get the token from the auth store
+  const auth = useAuth()
+  const token = await auth.getToken.value()
+
   let fetchOptions: FetchOptionsI = {
     method: method,
-    // credentials: "include",
     headers: {
+      Authorization: token ? `Bearer ${token}` : "",
       "Content-Type": "application/json",
     },
   }
