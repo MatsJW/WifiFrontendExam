@@ -107,10 +107,13 @@ onBeforeMount(async () => {
     endDate: end,
   })
 
-  // common x-axis categories
-  const categories = rawData.map((d) => d.startDate.split("T")[0])
+  const categories = rawData.map(
+    (d) =>
+      d.startDate.split("T")[0].slice(5).replace("-", "/") +
+      " " +
+      d.startDate.split("T")[1].slice(0, 5)
+  )
 
-  // pick series based on your dataType
   let series
   if (props.data.dataType === "dataUsage") {
     series = [
@@ -140,7 +143,6 @@ onBeforeMount(async () => {
     ]
   }
 
-  // update chart
   chartOptions.value = {
     ...chartOptions.value,
     xAxis: {
@@ -154,6 +156,9 @@ onBeforeMount(async () => {
 })
 
 const formatDate = (date: Date) => {
-  return date.toISOString().split("T")[0]
+  const y = date.getFullYear()
+  const m = String(date.getMonth() + 1).padStart(2, "0")
+  const d = String(date.getDate()).padStart(2, "0")
+  return `${y}-${m}-${d}`
 }
 </script>

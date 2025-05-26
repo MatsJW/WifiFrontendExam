@@ -43,8 +43,8 @@
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
     >
       <Card
-        :key="index"
         v-for="(item, index) in chartsStore.chartData"
+        :key="`${item.shipId}-${item.dataType}-${item.dataAction}-${item.timeframe}`"
         :title="`Chart for ${item.shipId === '' ? 'Fleet' : item.shipId} - ${
           item.dataAction
         } ${item.dataType} (${item.timeframe})`"
@@ -59,6 +59,8 @@
   <Modal v-model="AddModal">
     <ModalSelections @close="AddModal = false" />
   </Modal>
+
+  {{ selectedDate }}
 </template>
 
 <script lang="ts" setup>
