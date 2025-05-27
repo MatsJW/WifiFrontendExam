@@ -87,7 +87,7 @@ type Content =
 
 const dataOptions: Content[] = [
   { text: "Sum of sales", value: ["sales", "sum"] },
-  { text: "Amount of sales", value: ["sales", "amount"] },
+  { text: "Amount of sales", value: ["sales", "count"] },
   { text: "Average price per sale", value: ["sales", "average"] },
   { text: "Average usage", value: ["dataUsage", "average"] },
   { text: "Total usage", value: ["dataUsage", "sum"] },

@@ -45,9 +45,38 @@
 
     <div
       v-if="error"
-      class="text-red-500 absolute top-10 left-1/2 transform -translate-x-1/2 text-center mt-4"
+      class="absolute top-1/2 left-1/2 z-50 w-full max-w-sm transform -translate-x-1/2 -translate-y-1/2"
     >
-      Error loading data. Please try again later.
+      <div class="bg-white rounded-lg p-6 text-center">
+        <div
+          class="mx-auto w-10 h-10 flex items-center justify-center bg-red-100 text-red-600 rounded-full mb-4"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">
+          Oops, something went wrong
+        </h3>
+        <p class="text-gray-600 mb-2">
+          We couldn’t load data for <strong>{{ props.title }}</strong
+          >.
+        </p>
+        <p class="text-gray-600">
+          Please check your connection and try again later.
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -118,7 +147,6 @@ onBeforeMount(async () => {
     endDate: end,
   })
 
-  console.log("Fetched data:", rawData)
   if (rawData?.error) {
     console.error("Error fetching data:", rawData.error)
     loading.value = false

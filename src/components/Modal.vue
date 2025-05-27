@@ -62,10 +62,6 @@ watch(
         fallbackFocus: modalRef.value!,
         escapeDeactivates: true,
         clickOutsideDeactivates: true,
-        onDeactivate: () => {
-          // when Esc is pressed, focus-trap deactivates, so close the modal
-          closeModal()
-        },
       })
       focusTrap.activate()
       setTimeout(() => (backdropVisible.value = true), 200)
