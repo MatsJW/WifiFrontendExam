@@ -20,9 +20,12 @@
       </svg>
     </button>
 
-    <highcharts :options="chartOptions" :class="!loading ? '' : 'invisible'" />
+    <highcharts
+      :options="chartOptions"
+      :class="!loading && !error ? '' : 'invisible'"
+    />
     <div
-      v-if="loading"
+      v-if="loading && !error"
       class="top-1/2 left-1/2 -translate-x-1/2 text-gray-400 -translate-y-1/2 absolute"
     >
       <svg
@@ -38,6 +41,13 @@
       >
         <path d="M21 12a9 9 0 1 1-6.219-8.56" />
       </svg>
+    </div>
+
+    <div
+      v-if="error"
+      class="text-red-500 absolute top-10 left-1/2 transform -translate-x-1/2 text-center mt-4"
+    >
+      Error loading data. Please try again later.
     </div>
   </div>
 </template>
@@ -68,6 +78,7 @@ const props = defineProps({
 })
 
 const loading = ref(true)
+const error = ref(false)
 
 const chartOptions = ref<Highcharts.Options>({
   chart: {
@@ -106,6 +117,14 @@ onBeforeMount(async () => {
     startDate: start,
     endDate: end,
   })
+
+  console.log("Fetched data:", rawData)
+  if (rawData?.error) {
+    console.error("Error fetching data:", rawData.error)
+    loading.value = false
+    error.value = true
+    return
+  }
 
   const categories = rawData.map(
     (d) =>

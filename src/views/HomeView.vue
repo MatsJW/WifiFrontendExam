@@ -40,15 +40,15 @@
         />
       </section>
       <section
-        :key="selectedDate"
+        :key="`${selectedDate}-${organization?.id}`"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
       >
         <Card
           v-for="(item, index) in chartsStore.chartData"
           :key="`${item.shipId}-${item.dataType}-${item.dataAction}-${item.timeframe}`"
-          :title="`Chart for ${item.shipId === '' ? 'Fleet' : item.shipId} - ${
-            item.dataAction
-          } ${item.dataType} (${item.timeframe})`"
+          :title="`Chart for ${
+            item.shipId === null ? 'Fleet' : item.shipId
+          } - ${item.dataAction} ${item.dataType} (${item.timeframe})`"
           :data="item"
           :start-date="selectedDate[0]"
           :end-date="selectedDate[1]"
@@ -62,9 +62,7 @@
     </Modal>
   </SignedIn>
   <SignedOut>
-    <div class="flex items justify-center min-h-screen text-gray-500">
-      <h1 class="text-2xl font-bold">Please sign in to view charts</h1>
-    </div>
+    <LoggedOutHomeView />
   </SignedOut>
 </template>
 
@@ -76,9 +74,11 @@ import Modal from "@/components/Modal.vue"
 import ModalSelections from "@/components/ModalSelections.vue"
 import { useChartsStore } from "@/stores/charts-store"
 import type { ChartData } from "@/stores/charts-store"
-import { SignedIn, SignedOut } from "@clerk/vue"
+import { SignedIn, SignedOut, useOrganization } from "@clerk/vue"
+import LoggedOutHomeView from "@/components/LoggedOutHomeView.vue"
 
 const chartsStore = useChartsStore()
+const { organization } = useOrganization()
 
 const selectedDate = ref([
   new Date("2025-04-01T00:00:00"),

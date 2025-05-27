@@ -9,7 +9,7 @@
     </div>
     <div class="flex items-center">
       <SignedIn>
-        <OrganizationSwitcher />
+        <OrganizationSwitcher hide-personal />
         <UserButton />
       </SignedIn>
       <SignedOut>

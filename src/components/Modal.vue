@@ -29,8 +29,9 @@
         class="fixed inset-0 z-[90] flex h-full w-full items-center justify-center"
       >
         <div
+          ref="modalRef"
           @mousedown.stop
-          class="fixed z-[100]  flex transform flex-row rounded-lg bg-white p-10 shadow-lg dark:bg-darkmode-600 dark:shadow-gray-800"
+          class="fixed z-[100] flex transform flex-row rounded-lg bg-white p-10 shadow-lg dark:bg-darkmode-600 dark:shadow-gray-800"
         >
           <slot></slot>
         </div>
@@ -40,29 +41,43 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue"
+import { createFocusTrap, type FocusTrap } from "focus-trap"
+import { nextTick, onBeforeUnmount, ref, watch } from "vue"
 
 const model = defineModel({ type: Boolean, default: false })
 
 const open = ref(false)
 const backdropVisible = ref(false)
+const modalRef = ref<HTMLElement | null>(null)
+let focusTrap: FocusTrap | null = null
 
 watch(
   () => model.value,
-  () => {
-    if (model.value) {
+  async (val) => {
+    if (val) {
       open.value = true
-      setTimeout(() => {
-        backdropVisible.value = true
-      }, 200) // Delay to allow the backdrop to fade in first
+      await nextTick()
+      // initialize & activate focus-trap
+      focusTrap = createFocusTrap(modalRef.value!, {
+        fallbackFocus: modalRef.value!,
+        escapeDeactivates: true,
+        clickOutsideDeactivates: true,
+      })
+      focusTrap.activate()
+      setTimeout(() => (backdropVisible.value = true), 200)
     } else {
+      // deactivate trap & start closing animation
+      focusTrap?.deactivate()
       open.value = false
       backdropVisible.value = false
     }
-
-    return open.value
-  }
+  },
+  { immediate: true }
 )
+
+onBeforeUnmount(() => {
+  focusTrap?.deactivate()
+})
 
 const closeModal = () => {
   model.value = false // Start the closing animation of the modal
