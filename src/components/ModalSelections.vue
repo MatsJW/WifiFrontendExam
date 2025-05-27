@@ -57,7 +57,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onBeforeMount, ref } from "vue"
+import { onBeforeMount, ref, type Ref } from "vue"
 import { Dropdown } from "@star-fleet/component-dropdowns"
 import { fetchShips } from "@/utils/api-calls"
 import { Button } from "@star-fleet/component-buttons"
@@ -73,9 +73,9 @@ const emit = defineEmits<{
 
 const needToFillIn = ref(false)
 
-const selectedShip = ref<Content>("")
-const selectedData = ref<Content>("")
-const selectedTimeframe = ref<Content>("")
+const selectedShip: Ref<Content> = ref<Content>("")
+const selectedData: Ref<Content> = ref<Content>("")
+const selectedTimeframe: Ref<Content> = ref<Content>("")
 
 type Content =
   | string
@@ -127,18 +127,25 @@ const confirmSelection = () => {
     return
   }
 
-  chartsStore.addChartData({
-    shipId: selectedShip.value.value,
-    dataType: selectedData.value.value[0],
-    dataAction: selectedData.value.value[1],
-    timeframe: selectedTimeframe.value.value,
-  })
-  // Reset selections after confirmation
-  needToFillIn.value = false
-  selectedData.value = ""
-  selectedShip.value = ""
-  selectedTimeframe.value = ""
+  if (
+    typeof selectedShip.value == "object" &&
+    typeof selectedData.value == "object" &&
+    typeof selectedTimeframe.value == "object" &&
+    typeof selectedShip.value.value
+  ) {
+    chartsStore.addChartData({
+      shipId: selectedShip.value.value,
+      dataType: selectedData.value.value[0],
+      dataAction: selectedData.value.value[1],
+      timeframe: selectedTimeframe.value.value,
+    })
+    // Reset selections after confirmation
+    needToFillIn.value = false
+    selectedData.value = ""
+    selectedShip.value = ""
+    selectedTimeframe.value = ""
 
-  emit("close")
+    emit("close")
+  }
 }
 </script>

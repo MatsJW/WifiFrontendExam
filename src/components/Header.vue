@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-50 flex items-center justify-between px-4 w-full h-16 bg-white border-b border-gray-400 shadow-md"
+    class="sticky top-0 z-50 flex items-center justify-between px-4 w-full h-16 bg-white shadow-md"
   >
     <div>
       <RouterLink to="/" class="flex items-center">

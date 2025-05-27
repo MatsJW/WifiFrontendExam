@@ -139,17 +139,17 @@ onBeforeMount(async () => {
       {
         type: "line",
         name: "Data Sent (KB)",
-        data: rawData.map((d) => d.DataSentKb),
+        data: (rawData as DataUsageResponse[]).map((d) => d.DataSentKb),
       },
       {
         type: "line",
         name: "Data Received (KB)",
-        data: rawData.map((d) => d.DataReceivedKb),
+        data: (rawData as DataUsageResponse[]).map((d) => d.DataReceivedKb),
       },
       {
         type: "line",
         name: "Total Usage (KB)",
-        data: rawData.map((d) => d.DataUsageKb),
+        data: (rawData as DataUsageResponse[]).map((d) => d.DataUsageKb),
       },
     ]
   } else {
@@ -157,7 +157,7 @@ onBeforeMount(async () => {
       {
         type: "line",
         name: String(props.data.dataAction),
-        data: rawData.map((d) => d.value),
+        data: (rawData as SalesResponse[]).map((d) => d.value),
       },
     ]
   }
