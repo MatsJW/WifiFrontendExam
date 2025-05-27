@@ -66,7 +66,7 @@ export const fetchShips = async (): Promise<{ shipId: string }[]> => {
   return response
 }
 
-type FetchDataParams = {
+export type FetchDataParams = {
   shipId?: number
   timeframe: "daily" | "hourly"
   dataType: "sales" | "dataUsage"

@@ -47,7 +47,7 @@
           v-for="(item, index) in chartsStore.chartData"
           :key="`${item.shipId}-${item.dataType}-${item.dataAction}-${item.timeframe}`"
           :title="`Chart for ${
-            item.shipId === null ? 'Fleet' : item.shipId
+            item.shipId.toString() === '' ? 'Fleet' : item.shipId
           } - ${item.dataAction} ${item.dataType} (${item.timeframe})`"
           :data="item"
           :start-date="selectedDate[0]"
