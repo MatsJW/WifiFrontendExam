@@ -16,6 +16,7 @@ A Vue 3 + Vite frontend for visualizing and managing Wi-Fi data usage and sales 
   - [📦 Run Tests](#run-tests)
   - [🔍 Type Checking](#type-checking)
 - [📦 Dependencies](#dependencies)
+- [🔧 Troubleshooting](#troubleshooting)
 
 ## 🔧 Stack
 
@@ -103,7 +104,84 @@ See `package.json` for full dependency list. Key packages include:
 - @clerk/vue
 - vue, vue-router, pinia
 - tailwindcss, postcss, autoprefixer
-- @star-fleet component libraries
+- @star-fleet component libraries (available on company intranet only)
 - highcharts-vue
 - @vuepic/vue-datepicker
 - vitest, jsdom, @vue/test-utils
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+#### 🚫 Star-Fleet Components Not Installing
+
+If you encounter errors with `@star-fleet/*` packages:
+
+```powershell
+# Clear npm cache and reinstall
+npm cache clean --force
+Remove-Item node_modules -Recurse -Force
+Remove-Item package-lock.json -Force
+npm install
+```
+
+**Note:** Ensure you're connected to the company intranet/VPN.
+
+#### 🔐 Authentication Errors
+
+If Clerk authentication fails:
+
+1. Verify your `.env` variables are correctly set
+2. Check that `VITE_CLERK_PUBLISHABLE_KEY` starts with `pk_`
+3. Ensure the backend API is running on `http://localhost:8080`
+
+#### 📡 API Connection Issues
+
+If you can't connect to the backend:
+
+```powershell
+# Test backend connectivity
+curl http://localhost:8080/Wifi/ShipIds
+```
+
+- Ensure the WifiAPIExam backend is running
+- Check that CORS is properly configured in the backend
+- Verify the API base URL in your environment
+
+#### 🧪 Test Failures
+
+If tests are failing:
+
+```powershell
+# Run tests in watch mode for debugging
+npm run test -- --watch
+# Run specific test file
+npm run test -- Card.test.ts
+```
+
+#### 🏗️ Build Issues
+
+If the build fails:
+
+```powershell
+# Clear Vite cache
+Remove-Item .vite -Recurse -Force
+# Rebuild
+npm run build
+```
+
+#### 🎨 Styling Issues
+
+If Tailwind styles aren't applying:
+
+```powershell
+# Rebuild Tailwind
+npx tailwindcss -i ./src/assets/main.css -o ./dist/output.css --watch
+```
+
+### Getting Help
+
+- Check browser console for error messages
+- Verify all environment variables are set correctly
+- Ensure backend API is running and accessible
+- Try running `npm run type-check` to catch TypeScript issues

@@ -118,11 +118,7 @@ const chartOptions = ref<Highcharts.Options>({
     text: props.title,
   },
   xAxis: {},
-  yAxis: {
-    title: {
-      text: "Number of Users",
-    },
-  },
+  yAxis: {},
   series: [],
   tooltip: {
     headerFormat: "<b>{point.key}</b><br>",
@@ -195,6 +191,11 @@ onBeforeMount(async () => {
     xAxis: {
       type: "category",
       categories,
+    },
+    yAxis: {
+      title: {
+        text: props.data.dataType === "dataUsage" ? "Data (KB)" : "Value",
+      },
     },
     series,
   }
