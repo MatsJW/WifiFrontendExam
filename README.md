@@ -1,46 +1,48 @@
-# Wifi Exam Frontend
+# 📶 Wifi Exam Frontend
 
 A Vue 3 + Vite frontend for visualizing and managing Wi-Fi data usage and sales per ship. Integrates with the WifiAPIExam .NET backend and uses Clerk for authentication.
 
 ## Table of Contents
 
-- [Stack](#stack)
-- [Purpose](#purpose)
-- [Requirements](#requirements)
-- [Setup](#setup)
-  - [Environment Variables](#environment-variables)
-  - [Installation](#installation)
-- [Running the Application](#running-the-application)
-- [Project Structure](#project-structure)
-- [Development](#development)
-- [Dependencies](#dependencies)
+- [🔧 Stack](#stack)
+- [🎯 Purpose](#purpose)
+- [📋 Requirements](#requirements)
+- [⚙️ Setup](#setup)
+  - [🛠️ Environment Variables](#environment-variables)
+  - [🚀 Installation](#installation)
+- [▶️ Running the Application](#running-the-application)
+- [📁 Project Structure](#project-structure)
+- [🛠️ Development](#development)
+  - [📦 Run Tests](#run-tests)
+  - [🔍 Type Checking](#type-checking)
+- [📦 Dependencies](#dependencies)
 
-## Stack
+## 🔧 Stack
 
-- Framework: Vue 3 with Vite
-- Authentication: Clerk
-- State Management: Pinia
-- Routing: Vue Router
-- UI Components: Star-Fleet library
-- Styling: Tailwind CSS
-- Charts: Highcharts (via highcharts-vue)
-- Date Picker: @vuepic/vue-datepicker
-- Testing: Vitest & Vue Test Utils
+- ⚡ Framework: Vue 3 with Vite
+- 🔒 Authentication: Clerk
+- 🗄️ State Management: Pinia
+- 🧭 Routing: Vue Router
+- 🧩 UI Components: Star-Fleet library
+- 🎨 Styling: Tailwind CSS
+- 📈 Charts: Highcharts (via highcharts-vue)
+- 📅 Date Picker: @vuepic/vue-datepicker
+- 🧪 Testing: Vitest & Vue Test Utils
 
-## Purpose
+## 🎯 Purpose
 
 This application fetches ship IDs and time-series data (sales & data usage) from the backend, then displays interactive charts and tables for maritime Wi-Fi analytics over selectable date ranges.
 
-## Requirements
+## 📋 Requirements
 
 - Node.js >= 18
 - npm >= 8
 - .NET 9.0 backend API (WifiAPIExam) running at `http://localhost:8080`
 - Clerk publishable key and frontend API configured
 
-## Setup
+## ⚙️ Setup
 
-### Environment Variables
+### 🛠️ Environment Variables
 
 Create a `.env` file in the project root:
 
@@ -49,13 +51,13 @@ VITE_CLERK_PUBLISHABLE_KEY=<your-publishable-key>
 VITE_CLERK_FRONTEND_API=<your-frontend-api>
 ```
 
-### Installation
+### 🚀 Installation
 
 ```powershell
 npm install
 ```
 
-## Running the Application
+## ▶️ Running the Application
 
 ```powershell
 npm run dev
@@ -64,7 +66,7 @@ npm run dev
 - App runs on `http://localhost:5173`
 - Hot Module Replacement and Tailwind CSS enabled
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 ├── public/                  # Static assets
@@ -80,21 +82,21 @@ npm run dev
 └── package.json             # Scripts & dependencies
 ```
 
-## Development
+## 🛠️ Development
 
-### Run Tests
+### 📦 Run Tests
 
 ```powershell
 npm run test
 ```
 
-### Type Checking
+### 🔍 Type Checking
 
 ```powershell
 npm run type-check
 ```
 
-## Dependencies
+## 📦 Dependencies
 
 See `package.json` for full dependency list. Key packages include:
 
