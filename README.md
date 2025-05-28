@@ -9,8 +9,11 @@ A Vue 3 + Vite frontend for visualizing and managing Wi-Fi data usage and sales 
 - [📋 Requirements](#requirements)
 - [⚙️ Setup](#setup)
   - [🛠️ Environment Variables](#environment-variables)
+  - [📦 Telenor Maritime Component Library Setup](#telenor-maritime-component-library-setup)
   - [🚀 Installation](#installation)
 - [▶️ Running the Application](#running-the-application)
+  - [🐳 Docker (Preferred Method)](#docker-preferred-method)
+  - [💻 Local Development](#local-development)
 - [📁 Project Structure](#project-structure)
 - [🛠️ Development](#development)
   - [📦 Run Tests](#run-tests)
@@ -62,6 +65,7 @@ To use the Telenor Maritime component library, you need to configure npm to use 
 ```
 
 **Requirements:**
+
 - You need a valid GitHub Personal Access Token with `read:packages` permission
 - The token must have access to the Telenor Maritime GitHub organization
 - Contact your team lead for access to the GitHub organization if needed
@@ -76,12 +80,29 @@ npm install
 
 ## ▶️ Running the Application
 
+### 🐳 Docker (Preferred Method)
+
+The recommended way to run the application is using Docker:
+
+```powershell
+docker-compose up --build
+```
+
+- App runs on `http://localhost:3000`
+- Includes all dependencies and consistent environment
+- No need to install Node.js or configure npm registries locally
+
+### 💻 Local Development
+
+For local development with hot reloading:
+
 ```powershell
 npm run dev
 ```
 
-- App runs on `http://localhost:3000`
+- App runs on `http://localhost:5173`
 - Hot Module Replacement and Tailwind CSS enabled
+- Requires proper `.npmrc` and environment setup
 
 ## 📁 Project Structure
 
