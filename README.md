@@ -24,7 +24,7 @@ A Vue 3 + Vite frontend for visualizing and managing Wi-Fi data usage and sales 
 - 🔒 Authentication: Clerk
 - 🗄️ State Management: Pinia
 - 🧭 Routing: Vue Router
-- 🧩 UI Components: Star-Fleet library
+- 🧩 UI Components: Telenor-Maritime library
 - 🎨 Styling: Tailwind CSS
 - 📈 Charts: Highcharts (via highcharts-vue)
 - 📅 Date Picker: @vuepic/vue-datepicker
@@ -64,7 +64,7 @@ npm install
 npm run dev
 ```
 
-- App runs on `http://localhost:5173`
+- App runs on `http://localhost:3000`
 - Hot Module Replacement and Tailwind CSS enabled
 
 ## 📁 Project Structure
@@ -104,7 +104,7 @@ See `package.json` for full dependency list. Key packages include:
 - @clerk/vue
 - vue, vue-router, pinia
 - tailwindcss, postcss, autoprefixer
-- @star-fleet component libraries (available on company intranet only)
+- @telenor-maritime component libraries (only works with the correct .npmrc config)
 - highcharts-vue
 - @vuepic/vue-datepicker
 - vitest, jsdom, @vue/test-utils
@@ -113,9 +113,9 @@ See `package.json` for full dependency list. Key packages include:
 
 ### Common Issues
 
-#### 🚫 Star-Fleet Components Not Installing
+#### 🚫 Telenor-Maritime Components Not Installing
 
-If you encounter errors with `@star-fleet/*` packages:
+If you encounter errors with `@telenor-maritime/*` packages:
 
 ```powershell
 # Clear npm cache and reinstall

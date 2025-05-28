@@ -67,7 +67,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Button } from "@star-fleet/component-buttons"
+import { Button } from "@telenor-maritime/npm-components-buttons"
 import { ref } from "vue"
 import Card from "@/components/Card.vue"
 import Modal from "@/components/Modal.vue"

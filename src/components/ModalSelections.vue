@@ -58,9 +58,9 @@
 
 <script lang="ts" setup>
 import { onBeforeMount, ref, type Ref } from "vue"
-import { Dropdown } from "@star-fleet/component-dropdowns"
+import { Dropdown } from "@telenor-maritime/npm-components-dropdowns"
 import { fetchShips } from "@/utils/api-calls"
-import { Button } from "@star-fleet/component-buttons"
+import { Button } from "@telenor-maritime/npm-components-buttons"
 import type { ChartData } from "@/stores/charts-store"
 import { useChartsStore } from "@/stores/charts-store"
 

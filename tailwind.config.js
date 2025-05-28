@@ -2,7 +2,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,jsx,ts,vue}",
-    "./node_modules/@star-fleet/**/dist/*.{js,jsx,ts,vue}",
+    "./node_modules/@telenor-maritime/**/dist/*.{js,jsx,ts,vue}",
   ],
   darkMode: "class",
   theme: {
