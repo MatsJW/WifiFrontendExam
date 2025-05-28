@@ -1,5 +1,5 @@
 // Mock Clerk composable before module import
-import { describe, it, expect, vi, beforeEach } from "vitest"
+import { describe, it, expect, vi, beforeEach, beforeAll } from "vitest"
 vi.mock("@clerk/vue", () => ({
   useAuth: () => ({ getToken: { value: () => Promise.resolve("fake-token") } }),
 }))
@@ -9,7 +9,13 @@ import {
   fetchShips,
   fetchData,
   type FetchDataParams,
+  setBaseUrl,
 } from "./api-calls"
+
+// Define base URL for all API calls in tests
+beforeAll(() => {
+  setBaseUrl("http://localhost:8080")
+})
 
 // Mock global.fetch for all tests
 describe("apiWrapper", () => {
@@ -99,7 +105,7 @@ describe("apiWrapper", () => {
     })
     const result = await fetchShips()
     expect(fetchMock).toHaveBeenCalledWith(
-      "http://localhost:5085/Wifi/ShipIds",
+      "http://localhost:8080/Wifi/ShipIds",
       expect.objectContaining({
         method: "GET",
         headers: expect.objectContaining({
@@ -128,7 +134,7 @@ describe("apiWrapper", () => {
     }
     const result = await fetchData(params)
     expect(fetchMock).toHaveBeenCalledWith(
-      "http://localhost:5085/Wifi/sales/daily/sum?startDate=2025-01-01&endDate=2025-01-31&shipId=5",
+      "http://localhost:8080/Wifi/sales/daily/sum?startDate=2025-01-01&endDate=2025-01-31&shipId=5",
       expect.objectContaining({
         method: "GET",
         headers: expect.objectContaining({
@@ -155,7 +161,7 @@ describe("apiWrapper", () => {
     }
     const result = await fetchData(params)
     expect(fetchMock).toHaveBeenCalledWith(
-      "http://localhost:5085/Wifi/dataUsage/hourly/average?startDate=2025-02-01&endDate=2025-02-28",
+      "http://localhost:8080/Wifi/dataUsage/hourly/average?startDate=2025-02-01&endDate=2025-02-28",
       expect.objectContaining({
         method: "GET",
         headers: expect.objectContaining({

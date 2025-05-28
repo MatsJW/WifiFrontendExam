@@ -1,7 +1,13 @@
 import type { ChartData } from "@/stores/charts-store"
 import { useAuth } from "@clerk/vue"
 
-const baseUrl = "http://localhost:8080"
+export let baseUrl = "http://localhost:8080"
+/**
+ * Override the base URL for API calls (useful for testing)
+ */
+export function setBaseUrl(url: string) {
+  baseUrl = url
+}
 
 export type apiTypesT = "GET" | "DELETE" | "POST" | "PUT"
 export interface FetchOptionsI {
