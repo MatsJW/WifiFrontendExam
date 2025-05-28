@@ -1,39 +1,107 @@
-# Wifi-Exam-Frontend
+# Wifi Exam Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+A Vue 3 + Vite frontend for visualizing and managing Wi-Fi data usage and sales per ship. Integrates with the WifiAPIExam .NET backend and uses Clerk for authentication.
 
-## Recommended IDE Setup
+## Table of Contents
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- [Stack](#stack)
+- [Purpose](#purpose)
+- [Requirements](#requirements)
+- [Setup](#setup)
+  - [Environment Variables](#environment-variables)
+  - [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [Project Structure](#project-structure)
+- [Development](#development)
+- [Dependencies](#dependencies)
 
-## Type Support for `.vue` Imports in TS
+## Stack
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- Framework: Vue 3 with Vite
+- Authentication: Clerk
+- State Management: Pinia
+- Routing: Vue Router
+- UI Components: Star-Fleet library
+- Styling: Tailwind CSS
+- Charts: Highcharts (via highcharts-vue)
+- Date Picker: @vuepic/vue-datepicker
+- Testing: Vitest & Vue Test Utils
 
-## Customize configuration
+## Purpose
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+This application fetches ship IDs and time-series data (sales & data usage) from the backend, then displays interactive charts and tables for maritime Wi-Fi analytics over selectable date ranges.
 
-## Project Setup
+## Requirements
 
-```sh
+- Node.js >= 18
+- npm >= 8
+- .NET 9.0 backend API (WifiAPIExam) running at `http://localhost:8080`
+- Clerk publishable key and frontend API configured
+
+## Setup
+
+### Environment Variables
+
+Create a `.env` file in the project root:
+
+```powershell
+VITE_CLERK_PUBLISHABLE_KEY=<your-publishable-key>
+VITE_CLERK_FRONTEND_API=<your-frontend-api>
+```
+
+### Installation
+
+```powershell
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Running the Application
 
-```sh
+```powershell
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+- App runs on `http://localhost:5173`
+- Hot Module Replacement and Tailwind CSS enabled
 
-```sh
-npm run build
+## Project Structure
+
+```
+├── public/                  # Static assets
+├── src/
+│   ├── assets/              # CSS, images, fonts
+│   ├── components/          # Vue components
+│   ├── router/              # Vue Router setup
+│   ├── stores/              # Pinia stores
+│   ├── utils/               # api-calls.ts & tests
+│   └── views/               # Page views
+├── vite.config.ts           # Vite configuration
+├── vitest.config.ts         # Test configuration
+└── package.json             # Scripts & dependencies
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## Development
 
-```sh
-npm run test:unit
+### Run Tests
+
+```powershell
+npm run test
 ```
+
+### Type Checking
+
+```powershell
+npm run type-check
+```
+
+## Dependencies
+
+See `package.json` for full dependency list. Key packages include:
+
+- @clerk/vue
+- vue, vue-router, pinia
+- tailwindcss, postcss, autoprefixer
+- @star-fleet component libraries
+- highcharts-vue
+- @vuepic/vue-datepicker
+- vitest, jsdom, @vue/test-utils
