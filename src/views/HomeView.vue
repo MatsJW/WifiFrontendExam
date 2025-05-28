@@ -58,7 +58,7 @@
     </div>
 
     <Modal v-model="AddModal">
-      <ModalSelections @close="AddModal = false" />
+      <ModalSelections @close="AddModal = false" :key="`${organization?.id}`" />
     </Modal>
   </SignedIn>
   <SignedOut>
