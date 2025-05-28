@@ -52,6 +52,22 @@ VITE_CLERK_PUBLISHABLE_KEY=<your-publishable-key>
 VITE_CLERK_FRONTEND_API=<your-frontend-api>
 ```
 
+### 📦 Telenor Maritime Component Library Setup
+
+To use the Telenor Maritime component library, you need to configure npm to use the correct package registry. Create a `.npmrc` file in the project root:
+
+```
+@telenor-maritime:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+```
+
+**Requirements:**
+- You need a valid GitHub Personal Access Token with `read:packages` permission
+- The token must have access to the Telenor Maritime GitHub organization
+- Contact your team lead for access to the GitHub organization if needed
+
+**Note:** Without the correct `.npmrc` configuration, the `@telenor-maritime/*` packages will fail to install during `npm install`.
+
 ### 🚀 Installation
 
 ```powershell
@@ -125,7 +141,7 @@ Remove-Item package-lock.json -Force
 npm install
 ```
 
-**Note:** Ensure you're connected to the company intranet/VPN.
+**Note:** Ensure your GitHub token has the correct permissions and access to the Telenor Maritime organization.
 
 #### 🔐 Authentication Errors
 
