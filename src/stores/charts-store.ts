@@ -4,7 +4,7 @@ import { useLocalStorage } from "@vueuse/core"
 
 export type ChartData = {
   shipId: number
-  timeframe: "daily" | "hourly"
+  frequency: "daily" | "hourly"
   dataType: "sales" | "dataUsage"
   dataAction: "sum" | "average" | "count"
 }

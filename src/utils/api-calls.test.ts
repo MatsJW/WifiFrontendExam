@@ -1,4 +1,3 @@
-// Mock Clerk composable before module import
 import { describe, it, expect, vi, beforeEach, beforeAll } from "vitest"
 vi.mock("@clerk/vue", () => ({
   useAuth: () => ({ getToken: { value: () => Promise.resolve("fake-token") } }),
@@ -126,7 +125,7 @@ describe("apiWrapper", () => {
     })
     const params: FetchDataParams = {
       shipId: 5,
-      timeframe: "daily",
+      frequency: "daily",
       dataType: "sales",
       dataAction: "sum",
       startDate: "2025-01-01",
@@ -153,7 +152,7 @@ describe("apiWrapper", () => {
       json: async () => data,
     })
     const params: FetchDataParams = {
-      timeframe: "hourly",
+      frequency: "hourly",
       dataType: "dataUsage",
       dataAction: "average",
       startDate: "2025-02-01",

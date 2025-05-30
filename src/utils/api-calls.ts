@@ -74,7 +74,7 @@ export const fetchShips = async (): Promise<{ shipId: string }[]> => {
 
 export type FetchDataParams = {
   shipId?: number
-  timeframe: "daily" | "hourly"
+  frequency: "daily" | "hourly"
   dataType: "sales" | "dataUsage"
   dataAction: "sum" | "average" | "count"
   startDate: string
@@ -89,7 +89,7 @@ type FetchDataCallParams = {
 
 export const fetchData = async ({
   shipId,
-  timeframe,
+  frequency,
   dataType,
   dataAction,
   startDate,
@@ -104,7 +104,7 @@ export const fetchData = async ({
   }
 
   const response = await apiWrapper(
-    `${baseUrl}/Wifi/${dataType}/${timeframe}/${dataAction}`,
+    `${baseUrl}/Wifi/${dataType}/${frequency}/${dataAction}`,
     params,
     {},
     "GET"

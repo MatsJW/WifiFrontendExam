@@ -39,10 +39,10 @@
       </div>
       <div>
         <Dropdown
-          v-model="selectedTimeframe"
-          :content="timeframeOptions"
-          label="Select Timeframe"
-          :error="needToFillIn && !selectedTimeframe"
+          v-model="selectedFrequency"
+          :content="frequencyOptions"
+          label="Select Frequency"
+          :error="needToFillIn && !selectedFrequency"
         />
       </div>
     </div>
@@ -50,7 +50,7 @@
       <Button
         @click="confirmSelection"
         text="Confirm"
-        :disabled="!selectedShip || !selectedData || !selectedTimeframe"
+        :disabled="!selectedShip || !selectedData || !selectedFrequency"
       ></Button>
     </div>
   </div>
@@ -75,7 +75,7 @@ const needToFillIn = ref(false)
 
 const selectedShip: Ref<Content> = ref<Content>("")
 const selectedData: Ref<Content> = ref<Content>("")
-const selectedTimeframe: Ref<Content> = ref<Content>("")
+const selectedFrequency: Ref<Content> = ref<Content>("")
 
 type Content =
   | string
@@ -95,7 +95,7 @@ const dataOptions: Content[] = [
 
 const shipOptions = ref<Content[]>([])
 
-const timeframeOptions: Content[] = [
+const frequencyOptions: Content[] = [
   { text: "Hourly", value: "hourly" },
   { text: "Daily", value: "daily" },
 ]
@@ -121,7 +121,7 @@ onBeforeMount(async () => {
 })
 
 const confirmSelection = () => {
-  if (!selectedShip.value || !selectedData.value || !selectedTimeframe.value) {
+  if (!selectedShip.value || !selectedData.value || !selectedFrequency.value) {
     console.warn("Please select all options before confirming")
     needToFillIn.value = true
     return
@@ -130,20 +130,20 @@ const confirmSelection = () => {
   if (
     typeof selectedShip.value == "object" &&
     typeof selectedData.value == "object" &&
-    typeof selectedTimeframe.value == "object" &&
+    typeof selectedFrequency.value == "object" &&
     typeof selectedShip.value.value
   ) {
     chartsStore.addChartData({
       shipId: selectedShip.value.value,
       dataType: selectedData.value.value[0],
       dataAction: selectedData.value.value[1],
-      timeframe: selectedTimeframe.value.value,
+      frequency: selectedFrequency.value.value,
     })
     // Reset selections after confirmation
     needToFillIn.value = false
     selectedData.value = ""
     selectedShip.value = ""
-    selectedTimeframe.value = ""
+    selectedFrequency.value = ""
 
     emit("close")
   }
