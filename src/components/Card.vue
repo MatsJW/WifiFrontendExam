@@ -1,6 +1,7 @@
 <template>
   <div class="p-6 rounded-lg shadow-telenor-lg relative bg-white">
     <button
+      id="delete-button"
       @click="$emit('delete')"
       class="absolute top-2 z-50 right-2 cursor-pointer hover:opacity-80 hover:bg-gray-200 rounded-full p-1"
     >
@@ -70,7 +71,8 @@
           Oops, something went wrong
         </h3>
         <p class="text-gray-600 mb-2">
-          We couldn’t load data for <strong>{{ props.title }}</strong
+          We couldn’t load data for
+          <span class="font-semibold">{{ props.title }}</span
           >.
         </p>
         <p class="text-gray-600">
@@ -117,6 +119,7 @@ const chartOptions = ref<Highcharts.Options>({
   title: {
     text: props.title,
   },
+  colors: ["#4477AA", "#EE6677", "#228833"],
   xAxis: {},
   yAxis: {},
   series: [],

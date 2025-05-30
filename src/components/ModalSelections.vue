@@ -22,6 +22,7 @@
     <div class="p-6 min-w-[300px] grid grid-cols-1 gap-6">
       <div>
         <Dropdown
+          id="ship-dropdown"
           v-if="shipOptions.length > 0"
           v-model="selectedShip"
           :content="shipOptions"
@@ -31,6 +32,7 @@
       </div>
       <div>
         <Dropdown
+          id="data-dropdown"
           v-model="selectedData"
           :content="dataOptions"
           label="Select Data"
@@ -39,6 +41,7 @@
       </div>
       <div>
         <Dropdown
+          id="frequency-dropdown"
           v-model="selectedFrequency"
           :content="frequencyOptions"
           label="Select Frequency"
@@ -48,6 +51,7 @@
     </div>
     <div class="flex justify-center">
       <Button
+        id="confirm-button"
         @click="confirmSelection"
         text="Confirm"
         :disabled="!selectedShip || !selectedData || !selectedFrequency"

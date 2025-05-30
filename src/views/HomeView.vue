@@ -3,6 +3,7 @@
     <div class="py-10">
       <section class="mb-10 gap-4 flex items-center">
         <Button
+          id="add-chart-button"
           text="Add Chart"
           @click="openAddModal"
           icon="r"
