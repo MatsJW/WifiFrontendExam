@@ -45,10 +45,10 @@
       >
         <Card
           v-for="(item, index) in chartsStore.chartData"
-          :key="`${item.shipId}-${item.dataType}-${item.dataAction}-${item.timeframe}`"
+          :key="`${item.shipId}-${item.dataType}-${item.dataAction}-${item.frequency}`"
           :title="`Chart for ${
             item.shipId.toString() === '' ? 'Fleet' : item.shipId
-          } - ${item.dataAction} ${item.dataType} (${item.timeframe})`"
+          } - ${item.dataAction} ${item.dataType} (${item.frequency})`"
           :data="item"
           :start-date="selectedDate[0]"
           :end-date="selectedDate[1]"
