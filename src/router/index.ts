@@ -34,29 +34,13 @@ router.beforeEach(async (to, from, next) => {
 
   // Wait for auth to be loaded
   if (!auth.isLoaded.value) {
-    // Wait for auth to load using a watcher
-    const checkAuthLoaded = async () => {
-      return new Promise<void>((resolve) => {
-        const unwatch = watch(
-          () => auth.isLoaded.value,
-          (isLoaded) => {
-            if (isLoaded) {
-              unwatch()
-              resolve()
-            }
-          },
-          { immediate: true }
-        )
-      })
-    }
-
-    await checkAuthLoaded()
+    await auth.getToken.value() // Ensure auth is loaded and token is fetched
   }
 
   const isAuthenticated = auth.isSignedIn.value
 
   // If trying to access a guest-only page (like signIn) while authenticated
-  if (to.meta.guest && isAuthenticated) {
+  if (to.meta.guest && isAuthenticated && to.name === "signIn") {
     next("/") // Redirect authenticated users away from guest-only pages
   }
   // If trying to access a protected page while not authenticated

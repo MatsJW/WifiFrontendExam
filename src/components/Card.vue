@@ -1,7 +1,9 @@
 <template>
   <div class="p-6 rounded-lg shadow-telenor-lg relative bg-white">
     <button
-      id="delete-button"
+      :id="`delete-button-${props.title}-${props.data.dataType}-${props.data.dataAction}-${props.data.frequency}`"
+      name="delete-button"
+      aria-label="Delete chart"
       @click="$emit('delete')"
       class="absolute top-2 z-50 right-2 cursor-pointer hover:opacity-80 hover:bg-gray-200 rounded-full p-1"
     >
@@ -115,11 +117,14 @@ const chartOptions = ref<Highcharts.Options>({
   chart: {
     type: "line",
     backgroundColor: "#ffff",
+    zooming: {
+      type: "x",
+    },
   },
   title: {
     text: props.title,
   },
-  colors: ["#4477AA", "#EE6677", "#228833"],
+  colors: ["#1E88E5", "#FFC107", "#D81B60"],
   xAxis: {},
   yAxis: {},
   series: [],

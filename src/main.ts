@@ -13,6 +13,7 @@ import HighchartsVue from "highcharts-vue"
 
 const app = createApp(App)
 
+// @ts-ignore
 app.use(clerkPlugin, {
   publishableKey: import.meta.env.VITE_CLERK_PUBLISHABLE_KEY,
   frontendApi: import.meta.env.VITE_CLERK_FRONTEND_API,

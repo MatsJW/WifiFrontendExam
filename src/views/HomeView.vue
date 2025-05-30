@@ -29,7 +29,8 @@
         </Button>
 
         <VueDatePicker
-          class="max-w-80"
+          id="date-picker"
+          class="max-w-72"
           v-model="selectedDate"
           range
           :min-date="new Date('2025-04-01')"
